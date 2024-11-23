@@ -34,13 +34,3 @@ class Teacher extends Person {
 }
 
 module.exports = { Teacher };
-
-const teacher = new Teacher({
-  name: "Sir",
-  age: 32,
-  gender: "male",
-  subject: "Mathematics",
-  yearsOfExperience: 20,
-});
-
-console.log(teacher.teach());
