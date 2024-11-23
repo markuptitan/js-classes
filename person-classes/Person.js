@@ -2,20 +2,30 @@ class Person {
   constructor({ name, age, gender }) {
     this.name = name;
     this.age = age;
+
+    if (typeof gender === "string") {
+      const lowerGender = gender.toLowerCase();
+      this.prefix =
+        lowerGender === "male"
+          ? "He"
+          : lowerGender === "female"
+          ? "She"
+          : "They";
+    } else {
+      this.prefix = "They";
+    }
+
+    this.isSingularThey = this.prefix === "They";
     this.gender = gender;
-    this.prefix =
-      gender.toLowerCase() === "male"
-        ? "He"
-        : gender.toLowerCase() === "female"
-        ? "She"
-        : "They";
   }
 
   greet() {
     return `Hello, my name is ${this.name}.`;
   }
+
   getDetails() {
-    return `${this.prefix} is ${this.age} years old.`;
+    const verb = this.isSingularThey ? "are" : "is";
+    return `${this.prefix} ${verb} ${this.age} years old.`;
   }
 }
 
